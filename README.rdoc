@@ -27,7 +27,7 @@ You can chain the encrypted cookie jar:
 
 == Disclaimer
 
-This is provided as is. No guarantee is given for the security of the data written or read by this software. This has not been tested for cryptographic rigor. Use at your own discretion and risk. This should not be only level of security you use for your data.  It uses ActiveSupport::MessageEncryptor to encrypt and ActiveSupport::MessageVerifier to sign the cookie values, so it is at best as secure as these two libraries. Be sure to keep your Storefronts::Application.config.secret_token safe and secret, as both of the above libraries use it in your Rails application.
+This is provided as is. No guarantee is given for the security of the data written or read by this software. This has not been tested for cryptographic rigor. Use at your own discretion and risk. This should not be only level of security you use for your data.  It uses ActiveSupport::MessageEncryptor to encrypt and ActiveSupport::MessageVerifier to sign the cookie values, so it is at best as secure as these two libraries. Be sure to keep your AppName::Application.config.secret_token safe and secret, as both of the above libraries use it in your Rails application.
 
 == License
 
