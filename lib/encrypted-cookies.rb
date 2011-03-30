@@ -1,2 +1,2 @@
-require 'encrypted-cookies/encrypted_cookie_jar.rb'
-require 'encrypted-cookies/cookie_jar.rb'
+require File.expand_path( File.join( File.dirname( __FILE__ ), 'encrypted-cookies', 'cookie_jar' ) )
+require File.expand_path( File.join( File.dirname( __FILE__ ), 'encrypted-cookies', 'encrypted_cookie_jar' ) )

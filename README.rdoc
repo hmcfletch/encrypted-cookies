@@ -25,6 +25,11 @@ You can chain the encrypted cookie jar:
     cookies.permanent.encrypted[:permanent_encrypted_cookie] = "You don't know what this says, and it will be here for 20 years..."
     cookies.encrypted[:permanent_encrypted_cookie] # => "You don't know what this says, and it will be here for 20 years..."
 
+== Requirements
+
+Needs rails 3.0.5 because of an activesupport requirement bug in 3.0.4, see the link for more information
+https://rails.lighthouseapp.com/projects/8994/tickets/6393-action_dispatchhttprequestrb-missing-a-require
+
 == Disclaimer
 
 This is provided as is. No guarantee is given for the security of the data written or read by this software. This has not been tested for cryptographic rigor. Use at your own discretion and risk. This should not be only level of security you use for your data.  It uses ActiveSupport::MessageEncryptor to encrypt and ActiveSupport::MessageVerifier to sign the cookie values, so it is at best as secure as these two libraries. Be sure to keep your AppName::Application.config.secret_token safe and secret, as both of the above libraries use it in your Rails application.
