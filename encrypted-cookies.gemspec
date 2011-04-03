@@ -20,8 +20,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('test-unit', '~> 2.2.0')
-  # needs rails 3.0.5 because of an activesupport requirement bug in 3.0.4
+  s.add_dependency('activesupport', '~> 3.0.0')
+  s.add_dependency('activedispatch', '~> 3.0.0')
+
+  # needs rails 3.0.5 because of an actionpack requirement bug in 3.0.4
   # https://rails.lighthouseapp.com/projects/8994/tickets/6393-action_dispatchhttprequestrb-missing-a-require
-  # s.add_dependency('rails', '~> 3.0.4')
-  s.add_dependency('rails', '~> 3.0.0')
 end

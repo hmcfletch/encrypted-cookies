@@ -27,7 +27,9 @@ You can chain the encrypted cookie jar:
 
 == Requirements
 
-Needs rails 3.0.5 because of an activesupport requirement bug in 3.0.4, see the link for more information
+Encrypted cookies works with Rails 3.0.0, but because of a requirement bug in ActionPack 3.0.4, the tests only run with version 3.0.5.
+
+For more information:
 https://rails.lighthouseapp.com/projects/8994/tickets/6393-action_dispatchhttprequestrb-missing-a-require
 
 == Disclaimer
