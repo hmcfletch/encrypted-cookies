@@ -1,5 +1,19 @@
 = Encrypted Cookies
 
+== Important Notice
+
+There will be breaking changes from v0.3 -> v1.0. Usage won't change, but any cookies written with v0.3 will not be able to be read by v1.0. This is a security update and it is strongly encouraged that you update your projects accordingly.
+
+=== What the issue was with 0.3
+
+ActiveSupport::MessageEncryptor offers two encryption functions, encrypt and encrypt_and_verify. While I intended to use encrypt_and_verify when I released the gem, I accidently left the call to encrypt in the code. Life isn't all bad, though. Your cookie written with v0.3 are still strongly encrypted, and only the holder of the secret (i.e., you) will be able to decrypt them. The problem arises from the fact that there is no verification on the encrypted payload. If someone tampers with the encrypted payload, you won't know it. Well, you will know it becuase the decrypted tampered payload will be gibberish, but that might be hard to recognize under some circumstances. Using encrypt_and_verify will sign the encrypted payload so that if it is tampered with you will know it right away.
+
+ActiveSupport is actually deprecating encrypt and decrypt in v3.2 becuase of this very issue.
+
+TL;DR; You data is secure with v0.3, but it is harder to tell if someone is trying to tamper with it.
+
+Please feel free to contact me with any questions or concerns.
+
 == Description
 
 Encrypted cookie jar for Rails 3.
