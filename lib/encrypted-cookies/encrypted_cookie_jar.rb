@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module EncryptedCookies
   class EncryptedCookieJar < ActionDispatch::Cookies::CookieJar #:nodoc:
     MAX_COOKIE_SIZE = 4096 # Cookies can typically store 4096 bytes.
@@ -11,7 +13,7 @@ module EncryptedCookies
 
     def [](name)
       if encrypted_message = @parent_jar[name]
-        @encrypter.decrypt(encrypted_message)
+        @encrypter.decrypt_and_verify(encrypted_message)
       end
     rescue ActiveSupport::MessageVerifier::InvalidSignature
       nil
@@ -22,9 +24,9 @@ module EncryptedCookies
     def []=(key, options)
       if options.is_a?(Hash)
         options.symbolize_keys!
-        options[:value] = @encrypter.encrypt(options[:value])
+        options[:value] = @encrypter.encrypt_and_sign(options[:value])
       else
-        options = { :value => @encrypter.encrypt(options) }
+        options = { :value => @encrypter.encrypt_and_sign(options) }
       end
 
       raise CookieOverflow if options[:value].size > MAX_COOKIE_SIZE
@@ -50,7 +52,7 @@ module EncryptedCookies
 
       if secret.length < SECRET_MIN_LENGTH
         raise ArgumentError, "Secret should be something secure, " +
-          "like \"#{ActiveSupport::SecureRandom.hex(16)}\".  The value you " +
+          "like \"#{SecureRandom.hex(16)}\".  The value you " +
           "provided, \"#{secret}\", is shorter than the minimum length " +
           "of #{SECRET_MIN_LENGTH} characters"
       end
