@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Les Fletcher"]
   s.email       = ["les.fletcher@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/hmcfletch/encrypted-cookies"
   s.summary     = %q{Encrypted cookies for Rails 3}
   s.description = %q{Add an encrypted cookie jar for Rails 3 that can be chained with permanent and signed cookies}
 
