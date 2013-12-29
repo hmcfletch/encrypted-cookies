@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Les Fletcher"]
   s.email       = ["les.fletcher@gmail.com"]
   s.homepage    = "http://github.com/hmcfletch/encrypted-cookies"
-  s.summary     = %q{Encrypted cookies for Rails 3}
-  s.description = %q{Add an encrypted cookie jar for Rails 3 that can be chained with permanent and signed cookies}
+  s.summary     = %q{Encrypted cookies for Rails 3 and 4}
+  s.description = %q{Add an encrypted cookie jar for Rails 3 and 4 that can be chained with permanent and signed cookies}
 
   s.rubyforge_project = "encrypted-cookies"
 
@@ -20,9 +20,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency('test-unit', '>= 2.2.0')
-  s.add_dependency('activesupport', '~> 3.0')
-  s.add_dependency('actionpack', '~> 3.0')
-
-  # note actionpack has requirement bug in 3.0.4 so tests don't run
-  # https://rails.lighthouseapp.com/projects/8994/tickets/6393-action_dispatchhttprequestrb-missing-a-require
+  s.add_dependency('activesupport', '>= 3.0')
+  s.add_dependency('actionpack', '>= 3.0')
 end
