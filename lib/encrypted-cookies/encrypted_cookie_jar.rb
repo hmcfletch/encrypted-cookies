@@ -29,7 +29,7 @@ module EncryptedCookies
         options = { :value => @encrypter.encrypt_and_sign(options) }
       end
 
-      raise CookieOverflow if options[:value].size > MAX_COOKIE_SIZE
+      raise ActionDispatch::Cookies::CookieOverflow if options[:value].size > MAX_COOKIE_SIZE
       @parent_jar[key] = options
     end
 
